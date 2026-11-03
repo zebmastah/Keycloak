@@ -1,0 +1,48 @@
+# General
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+.env
+.env.*
+!.env.example
+
+# Node / JS
+node_modules/
+.npm/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Local tooling
+.terraform/
+.terragrunt-cache/
+*.tfstate
+*.tfstate.*
+crash.log
+
+# Keycloak / local volumes
+keycloak-data/
+postgres-data/
+redis-data/
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Generated deployment artifacts
+dist/
+build/
+out/
+
+# Secrets
+secrets/
+*.pem
+*.key
+*.crt
+*.p12

@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate repository structure
+        run: bash scripts/validate.sh
+
+      - name: Check for secrets in repo
+        run: |
+          if grep -RInE "(AKIA[0-9A-Z]{16}|BEGIN (RSA|OPENSSH|DSA|EC|PGP) PRIVATE KEY|password\s*[:=]\s*['\"]?change-me)" . --exclude-dir=.git; then
+            echo "Potential secrets detected." >&2
+            exit 1
+          fi
+
+      - name: Build container images
+        run: docker compose build --no-cache
+
+      - name: Smoke test docker compose config
+        run: docker compose config >/dev/null

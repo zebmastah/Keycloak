@@ -1,0 +1,12 @@
+{
+  "name": "keycloak-platform",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "bootstrap": "bash scripts/bootstrap.sh",
+    "validate": "bash scripts/validate.sh",
+    "up": "docker compose up -d --build",
+    "down": "docker compose down",
+    "logs": "docker compose logs -f --tail=200"
+  }
+}

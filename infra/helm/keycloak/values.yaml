@@ -1,0 +1,20 @@
+replicaCount: 1
+
+image:
+  repository: quay.io/keycloak/keycloak
+  tag: "26.0.7"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 8080
+
+env:
+  KC_HOSTNAME: localhost
+  KC_DB: postgres
+
+resources: {}
+
+persistence:
+  enabled: true
+  size: 8Gi
