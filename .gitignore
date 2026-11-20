@@ -30,6 +30,8 @@ crash.log
 keycloak-data/
 postgres-data/
 redis-data/
+openldap-config/
+openldap-data/
 
 # Editor / IDE
 .vscode/

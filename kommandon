@@ -1,0 +1,10 @@
+Exekvera en LDIF mot LDAP-servern:
+docker compose exec -T openldap sh -c 'ldapadd -x -D "cn=admin,dc=example,dc=org" -w "$LDAP_ADMIN_PASSWORD"' < openldap/ldif/10-test-users-and-groups.ldif
+
+Exekvera CURL för en token:
+curl -X POST "http://localhost:8080/realms/myrealm/protocol/openid-connect/token" \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=password" \
+  -d "client_id=myclient" \
+  -d "username=test1" \
+  -d "password=test"
